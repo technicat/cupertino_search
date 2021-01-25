@@ -300,7 +300,7 @@ class _CupertinoSearchInputState<T> extends State<CupertinoSearchInput<T>> {
   }
 
   Widget build(BuildContext context) {
-    final TextStyle valueStyle = CupertinoTheme.of(context).textTheme.navTitleTextStyle; //.subhead;
+    final TextStyle valueStyle = CupertinoTheme.of(context).textTheme.actionTextStyle; //.subhead;
 
     return CupertinoButton(
       onPressed: () => _showCupertinoSearch(context),
