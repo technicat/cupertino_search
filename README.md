@@ -1,1 +1,1 @@
-# cupertino_search
+Flutter Cupertino widgets version of [material search](https://github.com/ianldgs/material_search)
