@@ -25,11 +25,11 @@ class CupertinoSearchResult<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      child: new Row(
+    return Container(
+      child: Row(
         children: <Widget>[
-          new Container(width: 70.0, child: new Icon(icon)),
-          new Expanded(child: new Text(text, style: CupertinoTheme.of(context).textTheme.navTitleTextStyle)),
+          Container(width: 70.0, child: Icon(icon)),
+          Expanded(child: Text(text)), //style: CupertinoTheme.of(context).textTheme.navTitleTextStyle)),
         ],
       ),
       height: 56.0,
@@ -54,7 +54,7 @@ class CupertinoSearch<T> extends StatefulWidget {
   }) : assert(() {
          if (results == null && getResults == null
              || results != null && getResults != null) {
-           throw new AssertionError('Either provide a function to get the results, or the results.');
+           throw AssertionError('Either provide a function to get the results, or the results.');
          }
 
          return true;
@@ -75,7 +75,7 @@ class CupertinoSearch<T> extends StatefulWidget {
   final Widget leading;
 
   @override
-  _CupertinoSearchState<T> createState() => new _CupertinoSearchState<T>();
+  _CupertinoSearchState<T> createState() => _CupertinoSearchState<T>();
 }
 
 class _CupertinoSearchState<T> extends State<CupertinoSearch> {
@@ -83,11 +83,11 @@ class _CupertinoSearchState<T> extends State<CupertinoSearch> {
   List<CupertinoSearchResult<T>> _results = [];
 
   String _criteria = '';
-  TextEditingController _controller = new TextEditingController();
+  TextEditingController _controller = TextEditingController();
 
   _filter(dynamic v, String c) {
     return v.toString().toLowerCase().trim()
-      .contains(new RegExp(r'' + c.toLowerCase().trim() + ''));
+      .contains(RegExp(r'' + c.toLowerCase().trim() + ''));
   }
 
   @override
@@ -120,7 +120,7 @@ class _CupertinoSearchState<T> extends State<CupertinoSearch> {
       _resultsTimer.cancel();
     }
 
-    _resultsTimer = new Timer(new Duration(milliseconds: 400), () async {
+    _resultsTimer = Timer(Duration(milliseconds: 400), () async {
       if (!mounted) {
         return;
       }
@@ -176,8 +176,8 @@ class _CupertinoSearchState<T> extends State<CupertinoSearch> {
 
    // IconThemeData iconTheme = CupertinoTheme.of(context).iconTheme.copyWith(color: widget.iconColor);
 
-    return new CupertinoPageScaffold(
-      navigationBar: new CupertinoNavigationBar(
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
         leading: widget.leading,
         backgroundColor: widget.barBackgroundColor,
       //  iconTheme: iconTheme,
@@ -185,7 +185,7 @@ class _CupertinoSearchState<T> extends State<CupertinoSearch> {
           controller: _controller,
           autofocus: true,
          // decoration: new InputDecoration.collapsed(hintText: widget.placeholder),
-          style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle, // .title,
+          style: CupertinoTheme.of(context).textTheme.textStyle,
           onSubmitted: (String value) {
             if (widget.onSubmit != null) {
               widget.onSubmit(value);
@@ -204,16 +204,16 @@ class _CupertinoSearchState<T> extends State<CupertinoSearch> {
         
       ),
      child: _loading
-        ? new Center(
-            child: new Padding(
+        ? Center(
+            child: Padding(
               padding: const EdgeInsets.only(top: 50.0),
               child: CupertinoActivityIndicator() 
             ),
           )
-        : new SingleChildScrollView(
-            child: new Column(
+        : SingleChildScrollView(
+            child: Column(
               children: results.map((CupertinoSearchResult result) {
-                return new CupertinoButton(
+                return CupertinoButton(
                   onPressed: () => widget.onSelect(result.value),
                   child: result,
                 );
@@ -267,8 +267,8 @@ class _CupertinoSearchInputState<T> extends State<CupertinoSearchInput<T>> {
   GlobalKey<FormFieldState<T>> _formFieldKey = new GlobalKey<FormFieldState<T>>();
 
   _buildCupertinoSearchPage(BuildContext context) {
-    return new _CupertinoSearchPageRoute<T>(
-      settings: new RouteSettings(
+    return _CupertinoSearchPageRoute<T>(
+      settings: RouteSettings(
         name: 'cupertino_search',
       ),
       builder: (BuildContext context) {
@@ -304,13 +304,13 @@ class _CupertinoSearchInputState<T> extends State<CupertinoSearchInput<T>> {
 
     return CupertinoButton(
       onPressed: () => _showCupertinoSearch(context),
-      child: new FormField<T>(
+      child: FormField<T>(
         key: _formFieldKey,
         validator: widget.validator,
         onSaved: widget.onSaved,
         autovalidateMode: AutovalidateMode.always,
         builder: (FormFieldState<T> field) {
-          return new  Container(
+          return Container(
            /* baseStyle: valueStyle,
             isEmpty: _isEmpty(field),
             decoration: new Container(
@@ -318,7 +318,7 @@ class _CupertinoSearchInputState<T> extends State<CupertinoSearchInput<T>> {
               labelText: widget.placeholder,
               errorText: field.errorText,
             ), */
-            child: _isEmpty(field) ? null : new Text(
+            child: _isEmpty(field) ? null : Text(
               widget.formatter != null
                 ? widget.formatter(field.value)
                 : field.value.toString(),
