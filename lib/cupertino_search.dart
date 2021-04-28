@@ -3,7 +3,6 @@ library cupertino_search;
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:meta/meta.dart';
 
 typedef String FormFieldFormatter<T>(T v);
 typedef bool CupertinoSearchFilter<T>(T v, String c);
@@ -16,19 +15,19 @@ class CupertinoSearchResult<T> extends StatelessWidget {
     Key? key,
     required this.value,
     required this.text,
-    //this.icon,
+    this.icon,
   }) : super(key: key);
 
   final T value;
   final String text;
-  // final IconData icon;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Row(
         children: <Widget>[
-          //       Container(width: 70.0, child: Icon(icon)),
+          Container(width: 70.0, child: Icon(icon)),
           Expanded(
               child: Text(
                   text)), //style: CupertinoTheme.of(context).textTheme.navTitleTextStyle)),
@@ -231,8 +230,7 @@ class _CupertinoSearchPageRoute<T> extends CupertinoPageRoute<T> {
     RouteSettings settings: const RouteSettings(),
     maintainState: true,
     bool fullscreenDialog: false,
-  })  : assert(builder != null),
-        super(
+  }) : super(
             builder: builder,
             settings: settings,
             maintainState: maintainState,
