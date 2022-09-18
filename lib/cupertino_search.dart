@@ -223,7 +223,7 @@ class _CupertinoSearchState<T> extends State<CupertinoSearch> {
     );
   }
 }
-
+/*
 class _CupertinoSearchPageRoute<T> extends CupertinoPageRoute<T> {
   _CupertinoSearchPageRoute({
     required WidgetBuilder builder,
@@ -336,3 +336,4 @@ class _CupertinoSearchInputState<T> extends State<CupertinoSearchInput<T>> {
     );
   }
 }
+*/
