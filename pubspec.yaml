@@ -8,6 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  mockito: "^5.0.0"
   flutter:
     sdk: flutter
 
