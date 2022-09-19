@@ -4,7 +4,7 @@
 // find child widgets in the widget tree, read text, and verify that the values of widget properties
 // are correct.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -33,8 +33,8 @@ void main() {
     await tester.pumpWidget(
       new StatefulBuilder(
         builder: (BuildContext context, StateSetter setState) {
-          return new MaterialApp(
-            home: new Material(
+          return new CupertinoApp(
+            home: new StatefulWidget(
               child: new CupertinoSearch(
                 placeholder: 'Find something',
                 results: _names
