@@ -185,8 +185,10 @@ class _CupertinoSearchState<T> extends State<CupertinoSearch> {
         //  iconTheme: iconTheme,
         middle: CupertinoTextField(
           controller: _controller,
+          showCursor: true,
+          readOnly: false,
           autofocus: true,
-          // decoration: new InputDecoration.collapsed(hintText: widget.placeholder),
+          placeholder: widget.placeholder,
           style: CupertinoTheme.of(context).textTheme.textStyle,
           onSubmitted: (String value) {
             if (widget.onSubmit != null) {
